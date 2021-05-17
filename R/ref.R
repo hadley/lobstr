@@ -60,7 +60,7 @@ ref_tree <- function(x, character = FALSE, seen = child_env(emptyenv()), layout 
   if (is.list(x)) {
     subtrees <- lapply(x, ref_tree, layout = layout, seen = seen, character = character)
   } else if (is.environment(x)) {
-    subtrees <- lapply(as.list(x), ref_tree, layout = layout, seen = seen, character = character)
+    subtrees <- lapply(as.list(x, all.names = TRUE), ref_tree, layout = layout, seen = seen, character = character)
   } else if (is.character(x)) {
     subtrees <- ref_tree_chr(x, layout = layout, seen = seen)
   }
